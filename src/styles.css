@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light dark;
+
+  --background: #fff;
+  --foreground: #000;
+  --card: color-mix(in srgb, #c7c7cc 15%, transparent);
+  --card-foreground: #000;
+  --muted: #f2f2f3;
+  --muted-foreground: #4f4f57;
+  --destructive: #cf5b5b;
+  --border: #e2e2e4;
+  --ring: #d4d4d8;
+  --accent-gradient: linear-gradient(170deg, #ddcca1, #ba9d6a);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1c1c1e;
+    --foreground: #fff;
+    --card: #222225;
+    --card-foreground: #fff;
+    --muted: #28282c;
+    --muted-foreground: #b8b8bf;
+    --destructive: #a13131;
+    --border: #39393f;
+    --ring: #28282c;
+    --accent-gradient: linear-gradient(160deg, #ccb989, #ac8f5e);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-lora), ui-serif, Georgia, serif;
+}
+
+@theme {
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+@utility bg-accent-gradient {
+  background-image: var(--accent-gradient);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Tailwind 4 gives buttons the default cursor. */
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
